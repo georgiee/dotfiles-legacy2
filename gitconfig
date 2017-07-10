@@ -1,0 +1,45 @@
+[user]
+	email =
+	name = Georgios Kaleadis
+[core]
+	excludesfile = ~/.gitignore
+
+[color]
+	ui = true
+
+[http "https://scm.onewebuxp.allianz"]
+	sslVerify = false
+	sslCAInfo = ~/job/allianz/meta/certificates/current/Common/oneweb-ca.allianz.com.crt
+	sslCert = ~/job/allianz/meta/certificates/current/de-amos-georgios_kaleadis.crt
+	sslKey = ~/job/allianz/meta/certificates/current/de-amos-georgios_kaleadis.key
+	postBuffer = 524288000
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+[commit]
+	template = ~/.stCommitMsg
+[merge]
+	tool = meld
+[diff]
+  tool = meld
+[difftool]
+  prompt = false
+[difftool "meld"]
+  trustExitCode = true
+  cmd = open -W -a Meld --args \"$LOCAL\" \"$PWD/$REMOTE\"
+[difftool "sourcetree"]
+	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --nosplash \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+	trustExitCode = true
+[merge]
+  tool = meld
+[mergetool]
+  prompt = false
+[mergetool "meld"]
+  trustExitCode = true
+  cmd = open -W -a Meld --args --auto-merge \"$PWD/$LOCAL\" \"$PWD/$BASE\" \"$PWD/$REMOTE\" --output=\"$PWD/$MERGED\"
